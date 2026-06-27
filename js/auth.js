@@ -1,13 +1,35 @@
 /* =====================================================
    BookMyRoom Pro
-   Authentication
+   auth.js
+   Part 1
 ===================================================== */
 
 "use strict";
 
-/* ==========================================
+/* =====================================================
    ELEMENTS
-========================================== */
+===================================================== */
+
+const adminTab = document.getElementById("adminTab");
+const guestTab = document.getElementById("guestTab");
+
+const adminLoginSection =
+    document.getElementById("adminLogin");
+
+const guestSection =
+    document.getElementById("guestLogin");
+
+const showGuestLoginBtn =
+    document.getElementById("showGuestLogin");
+
+const showGuestRegisterBtn =
+    document.getElementById("showGuestRegister");
+
+const guestLoginForm =
+    document.getElementById("guestLoginForm");
+
+const guestRegisterForm =
+    document.getElementById("guestRegisterForm");
 
 const adminLoginBtn =
     document.getElementById("adminLoginBtn");
@@ -18,21 +40,175 @@ const guestLoginBtn =
 const guestRegisterBtn =
     document.getElementById("guestRegisterBtn");
 
-/* ==========================================
-   ADMIN LOGIN
-========================================== */
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
-if (adminLoginBtn) {
+document.addEventListener(
 
-    adminLoginBtn.addEventListener(
+    "DOMContentLoaded",
 
-        "click",
+    initializePage
 
-        adminLogin
+);
 
-    );
+function initializePage() {
+
+    registerEvents();
+
+    autoLogin();
 
 }
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+function registerEvents() {
+
+    if (adminTab) {
+
+        adminTab.addEventListener(
+
+            "click",
+
+            showAdmin
+
+        );
+
+    }
+
+    if (guestTab) {
+
+        guestTab.addEventListener(
+
+            "click",
+
+            showGuest
+
+        );
+
+    }
+
+    if (showGuestLoginBtn) {
+
+        showGuestLoginBtn.addEventListener(
+
+            "click",
+
+            openGuestLogin
+
+        );
+
+    }
+
+    if (showGuestRegisterBtn) {
+
+        showGuestRegisterBtn.addEventListener(
+
+            "click",
+
+            openGuestRegister
+
+        );
+
+    }
+
+    if (adminLoginBtn) {
+
+        adminLoginBtn.addEventListener(
+
+            "click",
+
+            adminLogin
+
+        );
+
+    }
+
+    if (guestLoginBtn) {
+
+        guestLoginBtn.addEventListener(
+
+            "click",
+
+            guestLogin
+
+        );
+
+    }
+
+    if (guestRegisterBtn) {
+
+        guestRegisterBtn.addEventListener(
+
+            "click",
+
+            guestRegister
+
+        );
+
+    }
+
+}
+
+/* =====================================================
+   TAB SWITCHING
+===================================================== */
+
+function showAdmin() {
+
+    adminTab.classList.add("active");
+    guestTab.classList.remove("active");
+
+    adminLoginSection.classList.remove("hidden");
+    guestSection.classList.add("hidden");
+
+}
+
+function showGuest() {
+
+    guestTab.classList.add("active");
+    adminTab.classList.remove("active");
+
+    guestSection.classList.remove("hidden");
+    adminLoginSection.classList.add("hidden");
+
+    openGuestLogin();
+
+}
+
+/* =====================================================
+   GUEST LOGIN / REGISTER SWITCH
+===================================================== */
+
+function openGuestLogin() {
+
+    guestLoginForm.classList.remove("hidden");
+
+    guestRegisterForm.classList.add("hidden");
+
+    showGuestLoginBtn.classList.add("active");
+
+    showGuestRegisterBtn.classList.remove("active");
+
+}
+
+function openGuestRegister() {
+
+    guestRegisterForm.classList.remove("hidden");
+
+    guestLoginForm.classList.add("hidden");
+
+    showGuestRegisterBtn.classList.add("active");
+
+    showGuestLoginBtn.classList.remove("active");
+
+}
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
 
 async function adminLogin() {
 
@@ -51,7 +227,11 @@ async function adminLogin() {
 
         if (!username || !password) {
 
-            alert("Enter Username and Password");
+            alert(
+
+                "Enter Username and Password"
+
+            );
 
             return;
 
@@ -88,27 +268,19 @@ async function adminLogin() {
 
     catch (err) {
 
-        alert(err.message);
+        alert(
+
+            err.message
+
+        );
 
     }
 
 }
 
-/* ==========================================
+/* =====================================================
    GUEST REGISTER
-========================================== */
-
-if (guestRegisterBtn) {
-
-    guestRegisterBtn.addEventListener(
-
-        "click",
-
-        guestRegister
-
-    );
-
-}
+===================================================== */
 
 async function guestRegister() {
 
@@ -131,21 +303,33 @@ async function guestRegister() {
             .getElementById("guestRegisterPassword")
             .value;
 
-        if (
+        if (!guest_name) {
 
-            !guest_name ||
+            alert("Enter Full Name");
 
-            !mobile ||
+            return;
 
-            !password
+        }
 
-        ) {
+        if (!mobile) {
 
-            alert(
+            alert("Enter Mobile Number");
 
-                "Please fill all fields."
+            return;
 
-            );
+        }
+
+        if (mobile.length !== 10) {
+
+            alert("Mobile Number must be 10 digits");
+
+            return;
+
+        }
+
+        if (!password) {
+
+            alert("Enter Password");
 
             return;
 
@@ -197,21 +381,9 @@ async function guestRegister() {
 
 }
 
-/* ==========================================
+/* =====================================================
    GUEST LOGIN
-========================================== */
-
-if (guestLoginBtn) {
-
-    guestLoginBtn.addEventListener(
-
-        "click",
-
-        guestLogin
-
-    );
-
-}
+===================================================== */
 
 async function guestLogin() {
 
@@ -228,19 +400,17 @@ async function guestLogin() {
             .getElementById("guestPassword")
             .value;
 
-        if (
+        if (!mobile) {
 
-            !mobile ||
+            alert("Enter Mobile Number");
 
-            !password
+            return;
 
-        ) {
+        }
 
-            alert(
+        if (!password) {
 
-                "Enter Mobile and Password"
-
-            );
+            alert("Enter Password");
 
             return;
 
@@ -278,50 +448,96 @@ async function guestLogin() {
 
     catch (err) {
 
-        alert(
-
-            err.message
-
-        );
+        alert(err.message);
 
     }
 
 }
 
-/* ==========================================
+/* =====================================================
    AUTO LOGIN
-========================================== */
+===================================================== */
 
-const currentUser = getUser();
+function autoLogin() {
 
-if (
+    const currentUser = getUser();
 
-    currentUser &&
+    if (!currentUser) {
 
-    window.location.pathname.endsWith(
+        return;
 
-        "index.html"
-
-    )
-
-) {
+    }
 
     if (
 
-        currentUser.role === "ADMIN"
+        window.location.pathname.endsWith("index.html") ||
+
+        window.location.pathname === "/"
 
     ) {
 
-        window.location.href =
-            "admin.html";
+        if (currentUser.role === "ADMIN") {
 
-    }
+            window.location.href =
+                "admin.html";
 
-    else {
+        }
 
-        window.location.href =
-            "dashboard.html";
+        else {
+
+            window.location.href =
+                "dashboard.html";
+
+        }
 
     }
 
 }
+
+/* =====================================================
+   ENTER KEY SUPPORT
+===================================================== */
+
+document.addEventListener(
+
+    "keydown",
+
+    function (e) {
+
+        if (e.key !== "Enter") {
+
+            return;
+
+        }
+
+        if (
+
+            !adminLoginSection.classList.contains("hidden")
+
+        ) {
+
+            adminLogin();
+
+        }
+
+        else if (
+
+            !guestLoginForm.classList.contains("hidden")
+
+        ) {
+
+            guestLogin();
+
+        }
+
+        else {
+
+            guestRegister();
+
+        }
+
+    }
+
+);
+
+console.log("auth.js loaded successfully");
