@@ -5,9 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <title>
 
@@ -15,255 +13,237 @@
 
     </title>
 
-    <link
-        rel="stylesheet"
-        href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
 
-<div class="dashboard">
+    <div class="dashboard">
 
-    <!-- ==========================
+        <!-- ==========================
          SIDEBAR
     =========================== -->
 
-    <aside class="sidebar">
+        <aside class="sidebar">
 
-        <h2>
+            <h2>
 
-            🏨 BookMyRoom
+                🏨 BookMyRoom
 
-        </h2>
+            </h2>
 
-        <ul>
+            <ul>
 
-            <li class="active">
+                <li class="active">
 
-                Dashboard
+                    Dashboard
 
-            </li>
+                </li>
 
-            <li id="myBookingsBtn">
+                <li id="myBookingsBtn">
 
-                My Bookings
+                    My Bookings
 
-            </li>
+                </li>
 
-            <li id="calendarBtn">
+                <li id="calendarBtn">
 
-                Occupancy Calendar
+                    Occupancy Calendar
 
-            </li>
+                </li>
 
-            <li id="logoutBtn">
+                <li id="logoutBtn">
 
-                Logout
+                    Logout
 
-            </li>
+                </li>
 
-        </ul>
+            </ul>
 
-    </aside>
+        </aside>
 
-    <!-- ==========================
+        <!-- ==========================
          MAIN
     =========================== -->
 
-    <main class="content">
+        <main class="content">
 
-        <!-- HEADER -->
+            <!-- HEADER -->
 
-        <div class="topbar">
+            <div class="topbar">
 
-            <div>
+                <div>
 
-                <h1>
+                    <h1>
 
-                    Welcome
+                        Welcome
 
-                </h1>
+                    </h1>
 
-                <p id="welcomeUser">
+                    <p id="welcomeUser">
 
-                    Loading...
+                        Loading...
 
-                </p>
+                    </p>
 
-            </div>
+                </div>
 
-            <div class="profile">
+                <div class="profile">
 
-                <div
-                    id="profileCircle"
-                    class="profile-circle">
+                    <div id="profileCircle" class="profile-circle">
 
-                    G
+                        G
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <!-- ROOM TITLE -->
 
-        <!-- ROOM TITLE -->
+            <div class="section-title">
 
-        <div class="section-title">
+                Available Rooms
 
-            Available Rooms
+            </div>
 
-        </div>
+            <!-- ROOM GRID -->
 
-        <!-- ROOM GRID -->
+            <div id="roomsContainer" class="room-grid">
 
-        <div
-            id="roomsContainer"
-            class="room-grid">
+            </div>
 
-        </div>
+        </main>
 
-    </main>
+    </div>
 
-</div>
-
-<!-- ======================================
+    <!-- ======================================
      BOOKING MODAL
 ======================================= -->
 
-<div
-    id="bookingModal"
-    class="modal hidden">
+    <div id="bookingModal" class="modal hidden">
 
-    <div class="modal-content">
+        <div class="modal-content">
 
-        <span
-            id="closeModal"
-            class="close">
+            <span id="closeModal" class="close">
 
-            &times;
+                &times;
 
-        </span>
+            </span>
 
-        <h2>
+            <h2>
 
-            Book Room
+                Book Room
 
-        </h2>
+            </h2>
 
-        <div class="form-group">
+            <div class="booking-grid"></div>
 
-            <label>
+            <div class="form-group">
 
-                Room
+                <label>
 
-            </label>
+                    Room
 
-            <input
-                id="selectedRoom"
-                readonly>
+                </label>
 
-        </div>
+                <input id="selectedRoom" readonly>
 
-        <div class="form-group">
+            </div>
 
-            <label>
+            <div class="form-group">
 
-                From Date
+                <label>
 
-            </label>
+                    From Date
 
-            <input
-                id="fromDate"
-                type="date">
+                </label>
 
-        </div>
+                <input id="fromDate" type="date">
 
-        <div class="form-group">
+            </div>
 
-            <label>
+            <div class="form-group">
 
-                To Date
+                <label>
 
-            </label>
+                    To Date
 
-            <input
-                id="toDate"
-                type="date">
+                </label>
 
-        </div>
+                <input id="toDate" type="date">
 
-        <div class="form-group">
+            </div>
 
-            <label>
+            <div class="form-group">
 
-                Number of Guests
+                <label>
 
-            </label>
+                    Number of Guests
 
-            <input
-                id="people"
-                type="number"
-                min="1"
-                value="1">
+                </label>
 
-        </div>
+                <input id="people" type="number" min="1" value="1">
 
-        <div class="form-group">
+            </div>
 
-            <label>
+            <div class="form-group">
 
-                Mobile
+                <label>
 
-            </label>
+                    Mobile
 
-            <input
-                id="mobile">
+                </label>
 
-        </div>
+                <input id="mobile">
 
-        <div class="form-group">
+            </div>
 
-            <label>
+            <div class="form-group">
 
-                ID Proof
+                <label>
 
-            </label>
+                    ID Proof
 
-            <select id="idProof">
+                </label>
 
-                <option>
+                <select id="idProof">
 
-                    AADHAR
+                    <option>
 
-                </option>
+                        AADHAR
 
-                <option>
+                    </option>
 
-                    PAN
+                    <option>
 
-                </option>
+                        PAN
 
-                <option>
+                    </option>
 
-                    PASSPORT
+                    <option>
 
-                </option>
+                        PASSPORT
 
-            </select>
+                    </option>
 
-        </div>
+                </select>
 
-        <div class="form-group">
+            </div>
 
-            <label>
+            <div class="form-group">
 
-                ID Number
+                <label>
 
-            </label>
+                    Upload ID
 
-            <input
-                id="idProofNo">
+                </label>
+
+                <input id="idProofImage" type="file" accept="image/*,.pdf">
+
+            </div>
 
         </div>
 
@@ -279,9 +259,7 @@
 
         </h3>
 
-        <button
-            id="confirmBookingBtn"
-            class="primary-btn">
+        <button id="confirmBookingBtn" class="primary-btn">
 
             Confirm Booking
 
@@ -289,11 +267,11 @@
 
     </div>
 
-</div>
+    </div>
 
-<script src="js/config.js"></script>
+    <script src="js/config.js"></script>
 
-<script src="js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
 
 </body>
 
