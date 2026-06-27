@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1.0">
+
+    <title>
+
+        BookMyRoom Dashboard
+
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ==========================
+         SIDEBAR
+    =========================== -->
+
+    <aside class="sidebar">
+
+        <h2>
+
+            🏨 BookMyRoom
+
+        </h2>
+
+        <ul>
+
+            <li class="active">
+
+                Dashboard
+
+            </li>
+
+            <li id="myBookingsBtn">
+
+                My Bookings
+
+            </li>
+
+            <li id="calendarBtn">
+
+                Occupancy Calendar
+
+            </li>
+
+            <li id="logoutBtn">
+
+                Logout
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ==========================
+         MAIN
+    =========================== -->
+
+    <main class="content">
+
+        <!-- HEADER -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>
+
+                    Welcome
+
+                </h1>
+
+                <p id="welcomeUser">
+
+                    Loading...
+
+                </p>
+
+            </div>
+
+            <div class="profile">
+
+                <div
+                    id="profileCircle"
+                    class="profile-circle">
+
+                    G
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ROOM TITLE -->
+
+        <div class="section-title">
+
+            Available Rooms
+
+        </div>
+
+        <!-- ROOM GRID -->
+
+        <div
+            id="roomsContainer"
+            class="room-grid">
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ======================================
+     BOOKING MODAL
+======================================= -->
+
+<div
+    id="bookingModal"
+    class="modal hidden">
+
+    <div class="modal-content">
+
+        <span
+            id="closeModal"
+            class="close">
+
+            &times;
+
+        </span>
+
+        <h2>
+
+            Book Room
+
+        </h2>
+
+        <div class="form-group">
+
+            <label>
+
+                Room
+
+            </label>
+
+            <input
+                id="selectedRoom"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                From Date
+
+            </label>
+
+            <input
+                id="fromDate"
+                type="date">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                To Date
+
+            </label>
+
+            <input
+                id="toDate"
+                type="date">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Number of Guests
+
+            </label>
+
+            <input
+                id="people"
+                type="number"
+                min="1"
+                value="1">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Mobile
+
+            </label>
+
+            <input
+                id="mobile">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                ID Proof
+
+            </label>
+
+            <select id="idProof">
+
+                <option>
+
+                    AADHAR
+
+                </option>
+
+                <option>
+
+                    PAN
+
+                </option>
+
+                <option>
+
+                    PASSPORT
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                ID Number
+
+            </label>
+
+            <input
+                id="idProofNo">
+
+        </div>
+
+        <h3>
+
+            Total Amount
+
+            ₹<span id="totalAmount">
+
+                0
+
+            </span>
+
+        </h3>
+
+        <button
+            id="confirmBookingBtn"
+            class="primary-btn">
+
+            Confirm Booking
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/config.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

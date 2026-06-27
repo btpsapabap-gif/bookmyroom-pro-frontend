@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>
+
+BookMyRoom Admin
+
+</title>
+
+<link
+rel="stylesheet"
+href="css/styles.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h2>
+
+            🏨 BookMyRoom
+
+        </h2>
+
+        <ul>
+
+            <li class="active">
+
+                Dashboard
+
+            </li>
+
+            <li
+                onclick="location.href='calendar.html'">
+
+                Occupancy Calendar
+
+            </li>
+
+            <li
+                onclick="location.href='dashboard.html'">
+
+                User Dashboard
+
+            </li>
+
+            <li
+                id="logoutBtn">
+
+                Logout
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="content">
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>
+
+                    Admin Dashboard
+
+                </h1>
+
+                <p
+                    id="adminName">
+
+                </p>
+
+            </div>
+
+            <div
+                class="profile-circle"
+                id="profileCircle">
+
+            </div>
+
+        </div>
+
+        <!-- CARDS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <h3>
+
+                    Rooms
+
+                </h3>
+
+                <h1
+                    id="totalRooms">
+
+                    0
+
+                </h1>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>
+
+                    Bookings
+
+                </h3>
+
+                <h1
+                    id="totalBookings">
+
+                    0
+
+                </h1>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>
+
+                    Guests
+
+                </h3>
+
+                <h1
+                    id="totalGuests">
+
+                    0
+
+                </h1>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>
+
+                    Revenue
+
+                </h3>
+
+                <h1>
+
+                    ₹<span
+                        id="totalRevenue">
+
+                        0
+
+                    </span>
+
+                </h1>
+
+            </div>
+
+        </div>
+
+        <!-- RECENT BOOKINGS -->
+
+        <div class="table-card">
+
+            <h2>
+
+                Recent Bookings
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>
+
+                        Room
+
+                    </th>
+
+                    <th>
+
+                        From
+
+                    </th>
+
+                    <th>
+
+                        To
+
+                    </th>
+
+                    <th>
+
+                        Mobile
+
+                    </th>
+
+                    <th>
+
+                        Amount
+
+                    </th>
+
+                </tr>
+
+                </thead>
+
+                <tbody
+                    id="recentBookings">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/config.js"></script>
+
+<script src="js/admin.js"></script>
+
+</body>
+
+</html>
