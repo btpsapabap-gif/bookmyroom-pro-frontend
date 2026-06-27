@@ -487,15 +487,33 @@ body{
 
 .modal-content{
 
-    width:420px;
+    width:900px;
+
+    max-width:95%;
 
     background:#fff;
 
-    padding:30px;
+    border-radius:20px;
 
-    border-radius:15px;
+    padding:35px;
 
     position:relative;
+
+}
+
+.booking-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.booking-grid .form-group{
+
+    margin-bottom:0;
 
 }
 
