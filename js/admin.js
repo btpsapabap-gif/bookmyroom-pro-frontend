@@ -32,6 +32,8 @@ let bookings = [];
 
 let filteredBookings = [];
 
+let selectedBooking = null;
+
 /* ===========================================================
    ELEMENTS
 =========================================================== */
@@ -346,6 +348,8 @@ async function loadDashboard() {
 
     renderDashboard();
 
+    refreshDashboardUI();
+
 }
 
 /* ===========================================================
@@ -365,8 +369,6 @@ async function loadBookings() {
     filteredBookings =
 
         [...bookings];
-
-    renderBookings();
 
 }
 
@@ -920,40 +922,126 @@ function formatDate(date) {
 
 function viewBooking(id) {
 
+    selectedBooking = booking;
+
     const booking = bookings.find(
 
-        b => b.id == id
+        b => Number(b.id) === Number(id)
 
     );
 
     if (!booking) {
 
+        alert("Booking not found.");
+
         return;
 
     }
 
-    alert(
+    const details = `
 
-        `Booking Details
+        <table class="receipt-table">
 
-Guest : ${booking.guest_name}
+            <tr>
+                <td>Booking ID</td>
+                <td>#${booking.id}</td>
+            </tr>
 
-Mobile : ${booking.mobile}
+            <tr>
+                <td>Guest Name</td>
+                <td>${booking.guest_name || "-"}</td>
+            </tr>
 
-Room : ${booking.room_name}
+            <tr>
+                <td>Mobile</td>
+                <td>${booking.mobile || "-"}</td>
+            </tr>
 
-Check-In : ${formatDate(booking.from_date)}
+            <tr>
+                <td>Room</td>
+                <td>${booking.room_name || "-"}</td>
+            </tr>
 
-Check-Out : ${formatDate(booking.to_date)}
+            <tr>
+                <td>Booking Type</td>
+                <td>${booking.booking_type || "-"}</td>
+            </tr>
 
-Amount : ₹${booking.total_amount}
+            <tr>
+                <td>Check-In</td>
+                <td>${formatDate(booking.from_date)}</td>
+            </tr>
 
-Status : ${booking.status}`
+            <tr>
+                <td>Check-Out</td>
+                <td>${formatDate(booking.to_date)}</td>
+            </tr>
 
-    );
+            <tr>
+                <td>Guests</td>
+                <td>${booking.people || "-"}</td>
+            </tr>
+
+            <tr>
+                <td>ID Proof</td>
+                <td>${booking.id_proof || "-"}</td>
+            </tr>
+
+            <tr>
+                <td>ID Number</td>
+                <td>${booking.id_proof_no || "-"}</td>
+            </tr>
+
+            <tr>
+                <td>Status</td>
+                <td>${booking.status}</td>
+            </tr>
+
+        </table>
+
+        <div class="receipt-total">
+
+            Total :
+            ${formatCurrency(booking.total_amount)}
+
+        </div>
+
+        ${booking.id_proof_image
+            ? `
+                <div style="margin-top:25px;text-align:center;">
+
+                    <img
+                        src="${booking.id_proof_image}"
+                        style="
+                            max-width:320px;
+                            border-radius:12px;
+                            border:1px solid #ddd;
+                        ">
+
+                </div>
+                `
+            : ""
+        }
+
+    `;
+
+    const cancelReceiptBtn =
+        document.getElementById("cancelReceiptBtn");
+
+    if (typeof receiptContent !== "undefined" &&
+        typeof receiptModal !== "undefined") {
+
+        receiptContent.innerHTML = details;
+
+        receiptModal.classList.remove("hidden");
+
+    } else {
+
+        alert("Receipt modal is not available.");
+
+    }
 
 }
-
 /* ===========================================================
    BookMyRoom Enterprise
    Part 5 - Search & Filters
@@ -1566,33 +1654,97 @@ function registerNavigation() {
 
 }
 
+cancelReceiptBtn.addEventListener(
+
+    "click",
+
+    cancelSelectedBooking
+
+);
+
 /* ===========================================================
-   LOGOUT
+   CANCEL BOOKING
 =========================================================== */
 
-function logout() {
+async function cancelSelectedBooking() {
 
-    const ok = confirm(
-
-        "Are you sure you want to logout?"
-
-    );
-
-    if (!ok) {
+    if (!selectedBooking) {
 
         return;
 
     }
 
-    localStorage.removeItem("user");
+    if (
 
-    sessionStorage.clear();
+        !confirm(
 
-    window.location.replace(
+            `Cancel Booking #${selectedBooking.id}?`
 
-        "index.html"
+        )
 
-    );
+    ) {
+
+        return;
+
+    }
+
+    try {
+
+        await apiRequest(
+
+            `/bookings/${selectedBooking.id}`,
+
+            "DELETE"
+
+        );
+
+        receiptModal.classList.add(
+
+            "hidden"
+
+        );
+
+        await initializeDashboard();
+
+        alert(
+
+            "Booking cancelled successfully."
+
+        );
+
+    }
+
+    catch (err) {
+
+        handleError(err);
+
+    }
+
+}
+
+/* ===========================================================
+   LOGOUT
+=========================================================== */
+
+function logout(event) {
+
+    if (event) {
+
+        event.preventDefault();
+
+    }
+
+    if (!confirm("Are you sure you want to logout?")) {
+
+        return;
+
+    }
+
+    localStorage.removeItem("bookmyroom_user");
+
+    sessionStorage.removeItem("bookmyroom_token");
+
+    window.location.href = "index.html";
 
 }
 
@@ -1736,36 +1888,6 @@ console.log(
 function $(id) {
 
     return document.getElementById(id);
-
-}
-
-/* ===========================================================
-   FORMAT DATE
-=========================================================== */
-
-function formatDate(date) {
-
-    if (!date) {
-
-        return "-";
-
-    }
-
-    return new Date(date).toLocaleDateString(
-
-        "en-IN",
-
-        {
-
-            day: "2-digit",
-
-            month: "short",
-
-            year: "numeric"
-
-        }
-
-    );
 
 }
 
