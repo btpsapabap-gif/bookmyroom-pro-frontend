@@ -9,11 +9,16 @@
 
     <title>
 
-        BookMyRoom Dashboard
+        BookMyRoom Enterprise
 
     </title>
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/booking.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 </head>
 
@@ -21,9 +26,9 @@
 
     <div class="dashboard">
 
-        <!-- ==========================
+        <!-- ===========================
          SIDEBAR
-    =========================== -->
+    ============================ -->
 
         <aside class="sidebar">
 
@@ -37,25 +42,25 @@
 
                 <li class="active">
 
-                    Dashboard
+                    🏠 Dashboard
 
                 </li>
 
-                <li id="myBookingsBtn">
+                <li id="historyMenu">
 
-                    My Bookings
+                    📜 My Bookings
 
                 </li>
 
-                <li id="calendarBtn">
+                <li id="profileMenu">
 
-                    Occupancy Calendar
+                    👤 Profile
 
                 </li>
 
                 <li id="logoutBtn">
 
-                    Logout
+                    🚪 Logout
 
                 </li>
 
@@ -63,13 +68,13 @@
 
         </aside>
 
-        <!-- ==========================
-         MAIN
-    =========================== -->
+        <!-- ===========================
+         CONTENT
+    ============================ -->
 
         <main class="content">
 
-            <!-- HEADER -->
+            <!-- TOPBAR -->
 
             <div class="topbar">
 
@@ -77,13 +82,21 @@
 
                     <h1>
 
-                        Welcome
+                        Welcome,
+
+                        <span id="guestName">
+
+                            Guest
+
+                        </span>
+
+                        👋
 
                     </h1>
 
-                    <p id="welcomeUser">
+                    <p>
 
-                        Loading...
+                        Book your stay quickly and securely.
 
                     </p>
 
@@ -91,9 +104,15 @@
 
                 <div class="profile">
 
-                    <div id="profileCircle" class="profile-circle">
+                    <div>
 
-                        G
+                        <strong id="guestMobile">
+
+                        </strong>
+
+                    </div>
+
+                    <div id="profileCircle" class="profile-circle">
 
                     </div>
 
@@ -101,17 +120,75 @@
 
             </div>
 
-            <!-- ROOM TITLE -->
+            <!-- ACTIVE BOOKING -->
 
-            <div class="section-title">
+            <div id="activeBookingCard" class="card hidden">
 
-                Available Rooms
+                <h2>
+
+                    📖 Current Booking
+
+                </h2>
+
+                <div id="activeBooking">
+
+                </div>
 
             </div>
 
-            <!-- ROOM GRID -->
+            <!-- AVAILABLE ROOMS -->
 
-            <div id="roomsContainer" class="room-grid">
+            <h2 class="section-title">
+
+                Available Rooms
+
+            </h2>
+
+            <div id="roomContainer" class="room-grid">
+
+            </div>
+
+            <!-- BOOKING HISTORY -->
+
+            <div class="table-card mt-20">
+
+                <div class="table-header">
+
+                    <h2>
+
+                        📜 Booking History
+
+                    </h2>
+
+                </div>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Room</th>
+
+                            <th>Check In</th>
+
+                            <th>Check Out</th>
+
+                            <th>Amount</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="historyTable">
+
+                    </tbody>
+
+                </table>
 
             </div>
 
@@ -119,157 +196,304 @@
 
     </div>
 
-    <!-- ======================================
+    <!-- ===========================
      BOOKING MODAL
-======================================= -->
+    =========================== -->
 
     <div id="bookingModal" class="modal hidden">
 
         <div class="modal-content">
 
-            <span id="closeModal" class="close">
+            <div class="booking-header">
 
-                &times;
+                <div>
 
-            </span>
+                    <h2>
 
-            <h2>
+                        Book Room
 
-                Book Room
+                    </h2>
 
-            </h2>
+                    <div id="selectedRoomName" class="booking-room">
 
-            <div class="booking-grid"></div>
+                    </div>
 
-            <div class="form-group">
+                </div>
 
-                <label>
+                <span id="closeBooking" class="close">
 
-                    Room
+                    &times;
 
-                </label>
-
-                <input id="selectedRoom" readonly>
+                </span>
 
             </div>
 
-            <div class="form-group">
+            <div class="booking-body">
 
-                <label>
+                <!-- FORM -->
 
-                    From Date
+                <div>
 
-                </label>
+                    <div class="booking-grid">
 
-                <input id="fromDate" type="date">
+                        <div class="form-group">
 
-            </div>
+                            <label>
 
-            <div class="form-group">
+                                Check In
 
-                <label>
+                            </label>
 
-                    To Date
+                            <input id="fromDate" type="date">
 
-                </label>
+                        </div>
 
-                <input id="toDate" type="date">
+                        <div class="form-group">
 
-            </div>
+                            <label>
 
-            <div class="form-group">
+                                Check Out
 
-                <label>
+                            </label>
 
-                    Number of Guests
+                            <input id="toDate" type="date">
 
-                </label>
+                        </div>
 
-                <input id="people" type="number" min="1" value="1">
+                        <div class="form-group">
 
-            </div>
+                            <label>
 
-            <div class="form-group">
+                                Guests
 
-                <label>
+                            </label>
 
-                    Mobile
+                            <input id="people" type="number" value="1" min="1">
 
-                </label>
+                        </div>
 
-                <input id="mobile">
+                        <div class="form-group">
 
-            </div>
+                            <label>
 
-            <div class="form-group">
+                                Mobile
 
-                <label>
+                            </label>
 
-                    ID Proof
+                            <input id="mobile" readonly>
 
-                </label>
+                        </div>
 
-                <select id="idProof">
+                        <div class="form-group">
 
-                    <option>
+                            <label>
 
-                        AADHAR
+                                ID Proof
 
-                    </option>
+                            </label>
 
-                    <option>
+                            <select id="idProof">
 
-                        PAN
+                                <option>Aadhaar</option>
+                                <option>PAN</option>
+                                <option>Passport</option>
+                                <option>Driving Licence</option>
 
-                    </option>
+                            </select>
 
-                    <option>
+                        </div>
 
-                        PASSPORT
+                        <div class="form-group">
 
-                    </option>
+                            <label>
 
-                </select>
+                                ID Number
 
-            </div>
+                            </label>
 
-            <div class="form-group">
+                            <input id="idProofNo">
 
-                <label>
+                        </div>
 
-                    Upload ID
+                    </div>
 
-                </label>
+                    <div class="upload-box mt-20">
 
-                <input id="idProofImage" type="file" accept="image/*,.pdf">
+                        <label>
+
+                            📎 Upload ID Proof
+
+                        </label>
+
+                        <input id="idProofImage" type="file" accept="image/*">
+
+                        <img id="imagePreview" class="hidden">
+
+                    </div>
+
+                </div>
+
+                <!-- SUMMARY -->
+
+                <div class="summary-card">
+
+                    <h3>
+
+                        Booking Summary
+
+                    </h3>
+
+                    <div id="bookingMessage" class="booking-message hidden">
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>
+
+                            Rate
+
+                        </span>
+
+                        <span id="roomRate">
+
+                        </span>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>
+
+                            Stay
+
+                        </span>
+
+                        <span id="stayDays">
+
+                            0 Days
+
+                        </span>
+
+                    </div>
+
+                    <div class="summary-total">
+
+                        <span>
+
+                            Total
+
+                        </span>
+
+                        <span id="totalAmount">
+
+                            ₹0
+
+                        </span>
+
+                    </div>
+
+                    <div class="booking-footer">
+
+                        <button id="cancelBooking" class="cancel-btn">
+
+                            Cancel
+
+                        </button>
+
+                        <button id="confirmBooking" class="confirm-btn">
+
+                            Confirm Booking
+
+                        </button>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-        <h3>
+    </div>
 
-            Total Amount
+    <!-- ==========================================================
+     BOOKING RECEIPT MODAL
+=========================================================== -->
 
-            ₹<span id="totalAmount">
+    <div id="receiptModal" class="modal hidden">
 
-                0
+        <div class="modal-content receipt-modal">
 
-            </span>
+            <div class="receipt-header">
 
-        </h3>
+                <div class="receipt-logo">
 
-        <button id="confirmBookingBtn" class="primary-btn">
+                    🏨
 
-            Confirm Booking
+                </div>
 
-        </button>
+                <div>
+
+                    <h2>
+
+                        BookMyRoom Enterprise
+
+                    </h2>
+
+                    <p>
+
+                        Booking Confirmation
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="receipt-success">
+
+                ✅ Booking Confirmed Successfully
+
+            </div>
+
+            <div id="receiptContent">
+
+                <!-- Filled from dashboard.js -->
+
+            </div>
+
+            <div class="receipt-actions">
+
+                <button id="printReceiptBtn" class="secondary-btn">
+
+                    🖨 Print
+
+                </button>
+
+                <button id="downloadReceiptBtn" class="primary-btn">
+
+                    📄 Download PDF
+
+                </button>
+
+                <button id="closeReceiptBtn" class="cancel-btn">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script src="js/config.js"></script>
+
+    <script src="js/upload.js"></script>
 
     <script src="js/dashboard.js"></script>
 

@@ -5,241 +5,266 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>BookMyRoom Pro</title>
 
-    <link
-        rel="stylesheet"
-        href="css/styles.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <link rel="stylesheet" href="css/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="login-container">
+    <div class="login-page">
 
-    <div class="login-card">
+        <!-- LEFT PANEL -->
 
-        <div class="logo">
+        <div class="login-left">
 
-            🏨
+            <div class="brand">
 
-            <h1>
+                <div class="brand-icon">
 
-                BookMyRoom
+                    🏨
 
-            </h1>
+                </div>
 
-            <p>
+                <h1>
 
-                Smart Room Booking System
+                    BookMyRoom
 
-            </p>
+                </h1>
+
+                <p>
+
+                    Smart Corporate Room Booking System
+
+                </p>
+
+            </div>
+
+            <div class="feature-list">
+
+                <div class="feature">
+
+                    ✔ Instant Room Booking
+
+                </div>
+
+                <div class="feature">
+
+                    ✔ Live Occupancy Calendar
+
+                </div>
+
+                <div class="feature">
+
+                    ✔ Guest Registration
+
+                </div>
+
+                <div class="feature">
+
+                    ✔ Admin Dashboard
+
+                </div>
+
+                <div class="feature">
+
+                    ✔ Secure ID Verification
+
+                </div>
+
+            </div>
 
         </div>
 
-        <!-- Tabs -->
+        <!-- RIGHT PANEL -->
 
-        <div class="tabs">
+        <div class="login-right">
 
-            <button
-                id="adminTab"
-                class="tab active">
+            <div class="login-card">
 
-                Admin
+                <h2>
 
-            </button>
+                    Welcome Back
 
-            <button
-                id="guestTab"
-                class="tab">
+                </h2>
 
-                Guest
+                <p>
 
-            </button>
+                    Login to continue
 
-        </div>
+                </p>
 
-        <!-- ==========================
-             ADMIN LOGIN
-        =========================== -->
+                <!-- Tabs -->
 
-        <div
-            id="adminLogin"
-            class="tab-content">
+                <div class="tabs">
 
-            <div class="form-group">
+                    <button id="adminTab" class="tab active">
 
-                <label>
+                        Admin
 
-                    Username
+                    </button>
 
-                </label>
+                    <button id="guestTab" class="tab">
 
-                <input
-                    id="adminUsername"
-                    type="text"
-                    placeholder="Enter username">
+                        Guest
 
-            </div>
-
-            <div class="form-group">
-
-                <label>
-
-                    Password
-
-                </label>
-
-                <input
-                    id="adminPassword"
-                    type="password"
-                    placeholder="Password">
-
-            </div>
-
-            <button
-                id="adminLoginBtn"
-                class="primary-btn">
-
-                Login
-
-            </button>
-
-        </div>
-
-        <!-- ==========================
-             GUEST
-        =========================== -->
-
-        <div
-            id="guestLogin"
-            class="tab-content hidden">
-
-            <div class="guest-buttons">
-
-                <button
-                    id="showGuestLogin"
-                    class="secondary-btn">
-
-                    Login
-
-                </button>
-
-                <button
-                    id="showGuestRegister"
-                    class="secondary-btn">
-
-                    Register
-
-                </button>
-
-            </div>
-
-            <!-- Login -->
-
-            <div
-                id="guestLoginForm">
-
-                <div class="form-group">
-
-                    <label>
-
-                        Mobile
-
-                    </label>
-
-                    <input
-                        id="guestMobile"
-                        type="tel"
-                        placeholder="Mobile">
+                    </button>
 
                 </div>
 
-                <div class="form-group">
+                <!-- ADMIN LOGIN -->
 
-                    <label>
+                <div id="adminLogin" class="tab-content">
 
-                        Password
+                    <div class="form-group">
 
-                    </label>
+                        <label>
 
-                    <input
-                        id="guestPassword"
-                        type="password"
-                        placeholder="Password">
+                            Username
 
-                </div>
+                        </label>
 
-                <button
-                    id="guestLoginBtn"
-                    class="primary-btn">
+                        <input id="adminUsername" type="text" placeholder="Enter Username">
 
-                    Login
+                    </div>
 
-                </button>
+                    <div class="form-group">
 
-            </div>
+                        <label>
 
-            <!-- Register -->
+                            Password
 
-            <div
-                id="guestRegisterForm"
-                class="hidden">
+                        </label>
 
-                <div class="form-group">
+                        <input id="adminPassword" type="password" placeholder="Enter Password">
 
-                    <label>
+                    </div>
 
-                        Full Name
+                    <button id="adminLoginBtn" class="primary-btn">
 
-                    </label>
+                        Login
 
-                    <input
-                        id="guestName"
-                        type="text"
-                        placeholder="Full Name">
+                    </button>
 
                 </div>
 
-                <div class="form-group">
+                <!-- GUEST -->
 
-                    <label>
+                <div id="guestLogin" class="tab-content hidden">
 
-                        Mobile
+                    <div class="guest-buttons">
 
-                    </label>
+                        <button id="showGuestLogin" class="secondary-btn">
 
-                    <input
-                        id="guestRegisterMobile"
-                        type="tel">
+                            Login
+
+                        </button>
+
+                        <button id="showGuestRegister" class="secondary-btn">
+
+                            Register
+
+                        </button>
+
+                    </div>
+
+                    <!-- Guest Login -->
+
+                    <div id="guestLoginForm">
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Mobile Number
+
+                            </label>
+
+                            <input id="guestMobile" type="tel" placeholder="9876543210">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Password
+
+                            </label>
+
+                            <input id="guestPassword" type="password" placeholder="Password">
+
+                        </div>
+
+                        <button id="guestLoginBtn" class="primary-btn">
+
+                            Login
+
+                        </button>
+
+                    </div>
+
+                    <!-- Guest Register -->
+
+                    <div id="guestRegisterForm" class="hidden">
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Full Name
+
+                            </label>
+
+                            <input id="guestName" type="text" placeholder="Enter Full Name">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Mobile Number
+
+                            </label>
+
+                            <input id="guestRegisterMobile" type="tel" placeholder="9876543210">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Password
+
+                            </label>
+
+                            <input id="guestRegisterPassword" type="password" placeholder="Create Password">
+
+                        </div>
+
+                        <button id="guestRegisterBtn" class="primary-btn">
+
+                            Register & Continue
+
+                        </button>
+
+                    </div>
 
                 </div>
-
-                <div class="form-group">
-
-                    <label>
-
-                        Password
-
-                    </label>
-
-                    <input
-                        id="guestRegisterPassword"
-                        type="password">
-
-                </div>
-
-                <button
-                    id="guestRegisterBtn"
-                    class="primary-btn">
-
-                    Register
-
-                </button>
 
             </div>
 
@@ -247,11 +272,8 @@
 
     </div>
 
-</div>
-
-<script src="js/config.js"></script>
-
-<script src="js/auth.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
 
 </body>
 
