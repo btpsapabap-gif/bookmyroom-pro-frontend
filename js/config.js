@@ -35,6 +35,7 @@ const JSON_HEADERS = {
 
 };
 
+const ID_PROOF_BUCKET = "idproofs";
 
 /* ============================================
    API REQUEST
