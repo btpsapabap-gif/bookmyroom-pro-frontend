@@ -966,6 +966,30 @@ function setupDefaultDates() {
 }
 
 /* ===========================================================
+   FORMAT CURRENCY
+=========================================================== */
+
+function formatCurrency(amount) {
+
+    return new Intl.NumberFormat(
+
+        "en-IN",
+
+        {
+
+            style: "currency",
+
+            currency: "INR",
+
+            maximumFractionDigits: 0
+
+        }
+
+    ).format(Number(amount || 0));
+
+}
+
+/* ===========================================================
    BookMyRoom Enterprise
    Guest Dashboard
    Part 4 - Booking Modal & Date Validation
@@ -1713,7 +1737,15 @@ async function createBooking() {
    BOOKING RECEIPT
 =========================================================== */
 
-showBookingReceipt()
+showBookingReceipt(result.booking);
+
+function showBookingReceipt(booking) {
+
+    console.log("Booking Created", booking);
+
+    alert("Booking created successfully.");
+
+}
 
 /* ===========================================================
    BOOKING MESSAGE
