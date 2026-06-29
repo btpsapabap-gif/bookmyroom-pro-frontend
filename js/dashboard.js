@@ -222,11 +222,12 @@ mobile.value =
 /* ===========================================================
    EVENTS
 =========================================================== */
-
-logoutBtn.addEventListener(
-    "click",
-    logout
-);
+if (logoutBtn) {
+    logoutBtn.addEventListener(
+        "click",
+        logout
+    );
+}
 
 closeBooking.addEventListener(
     "click",
@@ -243,15 +244,38 @@ confirmBooking.addEventListener(
     createBooking
 );
 
-historyMenu.addEventListener(
-    "click",
-    scrollHistory
-);
+if (historyMenu) {
 
-profileMenu.addEventListener(
-    "click",
-    showProfile
-);
+    historyMenu.addEventListener(
+        "click",
+        scrollHistory
+    );
+
+    /* ===========================================================
+   SCROLL TO BOOKING HISTORY
+    =========================================================== */
+
+    function scrollHistory() {
+
+        document.getElementById("historyTable")
+            ?.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+    }
+
+}
+
+if (profileMenu) {
+    profileMenu.addEventListener(
+        "click",
+        showProfile
+    );
+}
 
 fromDate.addEventListener(
     "change",

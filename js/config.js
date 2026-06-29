@@ -14,6 +14,16 @@ const CONFIG = {
 };
 
 /* ============================================
+   SUPABASE
+============================================ */
+
+const SUPABASE_URL =
+    "https://cmspxwigighdoatffqqh.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_HGAWXgvf2Z3GGpvHH34fBA_TwYjFJbD";
+
+/* ============================================
    AUTO DETECT ENVIRONMENT
 ============================================ */
 
