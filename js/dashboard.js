@@ -275,6 +275,19 @@ if (profileMenu) {
         "click",
         showProfile
     );
+    /* ===========================================================
+         PROFILE
+    =========================================================== */
+
+    function showProfile() {
+
+        alert(
+
+            "Profile module\n\nComing Soon"
+
+        );
+
+    }
 }
 
 fromDate.addEventListener(
