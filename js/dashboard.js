@@ -12,9 +12,45 @@
 
 const currentUser = getUser();
 
-if (!currentUser || currentUser.role !== "GUEST") {
+const bookingMode =
 
-    window.location.replace("index.html");
+    sessionStorage.getItem(
+
+        "bookingMode"
+
+    );
+
+/* -------------------------
+   VALIDATE USER
+-------------------------- */
+
+if (!currentUser) {
+
+    window.location.replace(
+
+        "index.html"
+
+    );
+
+}
+
+/* -------------------------
+   ALLOW
+-------------------------- */
+
+if (
+
+    currentUser.role !== "GUEST" &&
+
+    bookingMode !== "ADMIN"
+
+) {
+
+    window.location.replace(
+
+        "index.html"
+
+    );
 
 }
 
@@ -1602,6 +1638,10 @@ async function createBooking() {
 
             result.booking
 
+        );
+
+        sessionStorage.removeItem(
+            "bookingMode"
         );
 
     }

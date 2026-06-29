@@ -212,7 +212,16 @@ newBookingBtn.addEventListener(
     "click",
     () => {
 
+        sessionStorage.setItem(
+
+            "bookingMode",
+
+            "ADMIN"
+
+        );
+
         window.location.href =
+
             "dashboard.html";
 
     });
