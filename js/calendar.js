@@ -490,6 +490,54 @@ function renderCalendar() {
 
             dateString;
 
+        /* -------------------------
+                TODAY
+        -------------------------- */
+
+        const today = new Date();
+
+        const todayString =
+
+            `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+        if (dateString === todayString) {
+
+            cell.classList.add(
+
+                "today"
+
+            );
+
+        }
+
+        const weekDay =
+
+            new Date(
+
+                currentYear,
+
+                currentMonth,
+
+                day
+
+            ).getDay();
+
+        if (
+
+            weekDay === 0 ||
+
+            weekDay === 6
+
+        ) {
+
+            cell.classList.add(
+
+                "weekend"
+
+            );
+
+        }
+
         cell.innerHTML =
 
             `
@@ -497,6 +545,12 @@ function renderCalendar() {
             <div class="day-number">
 
                 ${day}
+
+            </div>
+
+            <div class="booking-counter">
+
+                 0 Booking
 
             </div>
 
@@ -696,9 +750,15 @@ function renderCalendarBookings() {
 
             tag.title =
 
-                `${booking.guest_name}
+                `Guest : ${booking.guest_name || "-"}
 
-                 ${booking.mobile}`;
+                Room : ${booking.room_name || "-"}
+
+                Status : ${booking.status}
+
+                Check In : ${formatDate(booking.from_date)}
+
+                Check Out : ${formatDate(booking.to_date)}`;
 
             tag.addEventListener(
 
@@ -720,9 +780,56 @@ function renderCalendarBookings() {
 
             container.appendChild(tag);
 
+            const counter =
+
+                cell.querySelector(
+
+                    ".booking-counter"
+
+                );
+
+            const count =
+
+                container.children.length;
+
+            counter.textContent =
+
+                count +
+
+                (count === 1
+
+                    ? " Booking"
+
+                    : " Bookings");
+
+            if (
+
+                filteredBookings.length === 0
+
+            ) {
+
+                calendarGrid.insertAdjacentHTML(
+
+                    "beforeend",
+
+                    `
+
+                <div class="calendar-empty">
+
+                No bookings found for the selected filters.
+
+                </div>
+
+            `
+
+                );
+
+            }
+
         }
 
     });
+
 
 }
 
