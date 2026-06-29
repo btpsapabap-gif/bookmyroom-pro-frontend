@@ -1654,13 +1654,20 @@ function registerNavigation() {
 
 }
 
-cancelReceiptBtn.addEventListener(
+const cancelReceiptBtn =
+    document.getElementById("cancelReceiptBtn");
 
-    "click",
+if (cancelReceiptBtn) {
 
-    cancelSelectedBooking
+    cancelReceiptBtn.addEventListener(
 
-);
+        "click",
+
+        cancelSelectedBooking
+
+    );
+
+}
 
 /* ===========================================================
    CANCEL BOOKING
