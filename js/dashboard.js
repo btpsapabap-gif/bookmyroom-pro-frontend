@@ -1737,15 +1737,6 @@ async function createBooking() {
    BOOKING RECEIPT
 =========================================================== */
 
-showBookingReceipt(result.booking);
-
-function showBookingReceipt(booking) {
-
-    console.log("Booking Created", booking);
-
-    alert("Booking created successfully.");
-
-}
 
 /* ===========================================================
    BOOKING MESSAGE
